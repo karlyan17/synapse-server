@@ -1,0 +1,16 @@
+version: '3.7'
+services:
+  synapse:
+    image: alpine/synapse
+    volumes:
+      - "./synapse:/synapse"
+    networks:
+      - haproxy
+    environment:
+      - "VIRTUAL_HOST=matrix.karlyan.me"
+      - "TLS=True"
+
+networks:
+  haproxy:
+    external: True
+    name: haproxy
